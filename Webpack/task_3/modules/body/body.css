@@ -1,8 +1,16 @@
-#count {
-    margin-left: 10px;
-    font-weight: bold;
-}
-button {
-    margin: 10px;
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  button {
     padding: 10px 20px;
-}
+    font-size: 1.2em;
+    margin: 20px;
+    cursor: pointer;
+  }
+  
+  p {
+    font-size: 1.5em;
+  }
+  

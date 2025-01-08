@@ -1,55 +1,40 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');  // Add this line
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: {
-        header: './modules/header/header.js',
-        body: './modules/body/body.js',
-        footer: './modules/footer/footer.js',
+  mode: 'development',  // Set mode to development
+  entry: {
+    header: './modules/header/header.js',
+    body: './modules/body/body.js',
+    footer: './modules/footer/footer.js',
+  },
+  output: {
+    filename: '[name].bundle.js',  // Use the module name as the filename
+    path: path.resolve(__dirname, 'dist'),  // Output to the 'dist' folder
+  },
+  devServer: {
+    static: path.join(__dirname, 'public'),  // Use 'static' instead of 'contentBase'
+    port: 8564,
+    open: true,  // Automatically open the browser when the server starts
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',  // Split all chunks, including node_modules
     },
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'public'),
-    },
-    module: {
-        rules: [
-            {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
-            },
-            {
-                test: /\.(png|jpe?g|gif)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[hash].[ext]',
-                            outputPath: 'assets',
-                        },
-                    },
-                ],
-            },
-        ],
-    },
-    mode: 'development',
-    devtool: 'inline-source-map',
-    devServer: {
-        static: {
-            directory: path.resolve(__dirname, 'public'),
-        },
-        port: 8564,
-        open: true,
-    },
-    plugins: [
-        new CleanWebpackPlugin(),  // This line should now work
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'public/index.html'),
-        }),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,  // Target all .css files
+        use: ['style-loader', 'css-loader'],  // Apply both loaders to CSS files
+      },
     ],
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-        },
-    },
+  },
+  plugins: [
+    new CleanWebpackPlugin(),  // Clean build folder before each build
+    new HtmlWebpackPlugin({
+      template: './public/index.html',  // Ensure this points to your template
+    }),
+  ],
 };
