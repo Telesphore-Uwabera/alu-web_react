@@ -15,5 +15,6 @@ $(document).ready(function () {
     $('body').append('<p id="count"></p>');
     $('body').append('<p>Copyright - Holberton School</p>');
 
-    $('button').on('click', _.debounce(updateCounter, 300));
+    // Use _.debounce with a delay of 500ms
+    $('button').on('click', _.debounce(updateCounter, 500));
 });
