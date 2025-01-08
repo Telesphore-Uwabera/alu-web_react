@@ -1,3 +1,5 @@
+---
+
 # Webpack Tasks
 
 This repository contains a series of tasks related to Webpack. The tasks focus on setting up Webpack, configuring it for development and production environments, managing static assets, and improving performance.
@@ -62,7 +64,7 @@ Make sure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/alu-web_react.git
+   git clone https://github.com/Telesphore-Uwabera/alu-web_react.git
    cd alu-web_react/webpack
    ```
 
