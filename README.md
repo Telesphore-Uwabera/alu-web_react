@@ -85,7 +85,7 @@ To get started with the project, clone the repository and install the dependenci
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/alu-web_react.git
+git clone https://github.com/Telesphore-Uwabera/alu-web_react.git
 cd alu-web_react/TypeScript
 ```
 
