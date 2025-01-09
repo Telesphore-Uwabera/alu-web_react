@@ -1,16 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+#count {
+    display: inline;
+    font-weight: bold;
   }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    margin: 20px;
-    cursor: pointer;
-  }
-  
-  p {
-    font-size: 1.5em;
-  }
-  

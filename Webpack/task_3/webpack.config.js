@@ -1,40 +1,54 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  mode: 'development',  // Set mode to development
+  mode: 'development',
+  devtool: 'inline-source-map',
   entry: {
     header: './modules/header/header.js',
     body: './modules/body/body.js',
     footer: './modules/footer/footer.js',
   },
-  output: {
-    filename: '[name].bundle.js',  // Use the module name as the filename
-    path: path.resolve(__dirname, 'dist'),  // Output to the 'dist' folder
+  performance: {
+    maxAssetSize: 1000000,
+    hints: false,
+    maxEntrypointSize: 1000000,
   },
-  devServer: {
-    static: path.join(__dirname, 'public'),  // Use 'static' instead of 'contentBase'
-    port: 8564,
-    open: true,  // Automatically open the browser when the server starts
-  },
+  plugins: [ new CleanWebpackPlugin(), new HtmlWebpackPlugin() ],
   optimization: {
     splitChunks: {
-      chunks: 'all',  // Split all chunks, including node_modules
+      chunks: 'all',
     },
+  },
+  devServer: {
+    contentBase: path.join(__dirname, './public'),
+    compress: true,
+    port: 8564,
+  },
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'public'),
   },
   module: {
     rules: [
       {
-        test: /\.css$/,  // Target all .css files
-        use: ['style-loader', 'css-loader'],  // Apply both loaders to CSS files
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          "file-loader",
+          {
+            loader: "image-webpack-loader",
+            options: {
+              bypassOnDebug: true, // webpack@1.x
+              disable: true, // webpack@2.x and newer
+            },
+          },
+        ],
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),  // Clean build folder before each build
-    new HtmlWebpackPlugin({
-      template: './public/index.html',  // Ensure this points to your template
-    }),
-  ],
 };

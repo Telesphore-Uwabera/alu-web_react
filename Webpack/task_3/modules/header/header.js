@@ -1,7 +1,7 @@
-import $ from 'jquery';
-import './header.css';
+const $ = require( "jquery" );
+import "./header.css";
+
+$('body').append("<div id='logo'></div>");
+$('body').append("<h1>Holberton Dashboard</h1>");
 
 console.log('Init header');
-$(document).ready(function() {
-  $('header').html('<img src="assets/holberton-logo.jpg" alt="Holberton logo"><h1>Holberton Dashboard</h1>');
-});
