@@ -1,23 +1,22 @@
-import './App.css';
 import React from 'react';
-import { hot } from 'react-hot-loader';
-
+import './App.css';
 import Header from '../Header/Header';
-import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
-import { Notifications } from '../Notifications/Notifications';
+import Notification from '../Notifications/Notifications';
+import Login from '../Login/Login';
+
 
 function App() {
   return (
-    <>
-      <Notifications />
+    <React.Fragment>
+      <Notification />
       <div className="App">
         <Header />
         <Login />
         <Footer />
       </div>
-    </>
+    </React.Fragment>
   );
 }
 
-export default hot(module)(App);
+export default App;

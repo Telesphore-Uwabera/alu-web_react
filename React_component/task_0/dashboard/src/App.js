@@ -1,7 +1,14 @@
-import React from "react";
+// src/App/App.js
+import React, { Component } from 'react';
 
-function App() {
-  return <h1>Hello, React!</h1>;
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Welcome to My React App</h1>
+      </div>
+    );
+  }
 }
 
 export default App;
