@@ -1,34 +1,33 @@
+import logo from '../assets/holberton-logo.jpg';
+// import './Header.css';
 import React from 'react';
-import logo from '../assets/holberton_logo.jpg';
 import { StyleSheet, css } from 'aphrodite';
 
+const styles = StyleSheet.create({
+    appHeader: {
+        backgroundColor: 'white',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 'calc(10px + 2vmin)',
+        borderBottom: '4px solid #FF0000',
+    },
+
+    appHeaderH1: {
+        maxWidth: 'fitContent',
+        color: '#FF0000',
+    },
+
+});
 
 function Header() {
-  return (
-    <div className={css(headerStyles.appHeader)}>
-      <img src={logo} alt="logo" className={css(headerStyles.appLogo)} />
-      <h1 className={css(headerStyles.h1)}>School dashboard</h1>
-    </div>
-  )
+    return (
+        <div className={css(styles.appHeader)} id="Header">
+            <img src={ logo } alt="Holberton Logo: Red Seahorse" />
+            <h1 className={css(styles.appHeaderH1)}>School dashboard</h1>
+        </div>
+    )
 }
-
-const headerStyles = StyleSheet.create({ 
-  appHeader: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'left',
-    borderBottom: '3px solid #e1484c',
-    marginTop: '30px'
-  },
-
-  appLogo: {
-		width: '150px'
-	},
-
-  h1: {
-		margin: 'auto auto auto 0',
-    marginLeft: '3rem'
-	},
-});
 
 export default Header;

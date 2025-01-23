@@ -3,19 +3,18 @@ import { shallow } from 'enzyme';
 import Footer from './Footer';
 import { StyleSheetTestUtils } from 'aphrodite';
 
-describe("Testing <Footer /> component", () => {
-  let wrapper;
-
-  beforeEach(() => {
+beforeEach(() => {
     StyleSheetTestUtils.suppressStyleInjection();
-    wrapper = shallow(<Footer />);
-  });
+});
 
-  it("Footer Component renders without crashing", () => {
-    expect(wrapper.exists());
-  });
+describe('<Footer />', () => {
+    it('renders an <Footer /> component', () => {
+        const wrapper = shallow(<Footer />);
+        expect(wrapper).toHaveLength(1);
+    });
 
-  it("Footer compoenent render at the very least the text “Copyright”", () => {
-    expect(wrapper.find("Copyright").at(0)).toBeDefined();
-  });
+    it('renders an <Footer /> component checking for App-Footer', () => {
+        const wrapper = shallow(<Footer />);
+        expect(wrapper.find('div p').text()).toContain('Copyright');
+    });
 });
